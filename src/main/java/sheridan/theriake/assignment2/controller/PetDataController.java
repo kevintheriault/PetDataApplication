@@ -3,7 +3,12 @@ package sheridan.theriake.assignment2.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.stylesheets.LinkStyle;
+import sheridan.theriake.assignment2.model.PetForm;
 import sheridan.theriake.assignment2.service.PetDataService;
+
+import java.util.List;
 
 //Using LOMBOK for logging.
 @Controller
@@ -24,9 +29,10 @@ public class PetDataController {
     }
 
     @GetMapping("/ListPets")
-    public String listPets(){
+    public ModelAndView listPets(){
         log.trace("listPets() called");
-        return "ListPets";
+        List<PetForm> listOfPets = petDataService.getAllPetForms();
+        return new ModelAndView("ListPets", "pets", listOfPets);
     }
 
     @GetMapping("/AddPet")
