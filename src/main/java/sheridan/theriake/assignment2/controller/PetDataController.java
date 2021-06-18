@@ -42,6 +42,7 @@ public class PetDataController {
     @GetMapping("/EditPet")
     public String editPet(){
         log.trace("editPet() called");
+
         return "EditPet";
     }
 
