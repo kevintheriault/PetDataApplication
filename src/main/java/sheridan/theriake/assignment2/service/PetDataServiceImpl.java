@@ -58,7 +58,7 @@ public class PetDataServiceImpl implements PetDataService {
         petRepo.deleteAll();
     }
 
-    public void deletePetform(int id) {
+    public void deletePetForm(int id) {
         petRepo.deleteById(id);
     }
 
@@ -68,12 +68,12 @@ public class PetDataServiceImpl implements PetDataService {
             PetForm petForm = new PetForm();
             PetEntity pet = result.get();
             copyEntityToForm(petForm, pet);
-            return form;
+            return petForm;
         }
         return null;
     }
 
-    public void updatePetform(PetForm form){
+    public void updatePetForm(PetForm form){
         Optional<PetEntity> result = petRepo.findById(form.getId());
         if(result.isPresent()){
             PetEntity pet = result.get();
