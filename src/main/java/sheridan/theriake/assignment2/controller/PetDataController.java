@@ -3,11 +3,19 @@ package sheridan.theriake.assignment2.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import sheridan.theriake.assignment2.service.PetDataService;
 
 //Using LOMBOK for logging.
 @Controller
 @Slf4j
 public class PetDataController {
+
+//    Service injection.
+    private final PetDataService petDataService;
+
+    public PetDataController(PetDataService petDataService){
+        this.petDataService = petDataService;
+    }
 
     @GetMapping(value={"/", "/Index"})
     public String index(){
