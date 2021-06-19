@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.stylesheets.LinkStyle;
 import sheridan.theriake.assignment2.model.PetForm;
@@ -80,9 +77,19 @@ public class PetDataController {
     }
 
     @GetMapping("/DeletePet")
-    public String deletePet(){
+    public String deletePet(@RequestParam int id, Model model){
         log.trace("deletePet() called");
+        PetForm petForm = petDataService.getPetForm(id);
+        model.addAttribute("petForm", petForm);
         return "DeletePet";
+    }
+
+//    Post mapping for when user hits 'confirm delete'.  This just deletes using Post data and redirects to list.
+    @PostMapping("/DeleteEntry")
+    public String deletePet(@RequestParam int id) {
+        log.trace("get mapped deletePet() is called");
+            petDataService.deletePetForm(id);
+        return "redirect:ListPets";
     }
 
     @GetMapping("/DetailPet")

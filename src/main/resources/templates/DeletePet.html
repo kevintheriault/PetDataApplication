@@ -5,6 +5,17 @@
     <title>Delete a Pet -- Pet Data Application</title>
 </head>
 <body>
-
+<h1>Are you sure you want to DELETE this entry?</h1>
+<div th:object="${petForm}">
+    <p>Pet Name: <span th:text="*{petName}">Lily</span></p>
+    <p>Owners Last Name: <span th:text="*{ownerLastName}">Theriault</span></p>
+    <p>Pet Species: <span th:text="*{petKind}">Cat</span></p>
+    <p>Pet Gender: <span th:text="*{petGender}">Female</span></p>
+    <p>Vaccinated: <span th:text="*{vaccinated}? 'Yes' : 'No' ">Yes </span> </p>
+</div>
+<form method="post" th:action="@{DeleteEntry}">
+    <input type="hidden" name="id" th:value="*{petForm.getId()}">
+    <input type="submit" value="Confirm Deletion">
+</form>
 </body>
 </html>
