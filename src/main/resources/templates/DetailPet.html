@@ -5,11 +5,13 @@
     <title>Detailed Pet Data -- Pet Data Application</title>
 </head>
 <body>
-<td th:text="${status.count}">1 </td>
-<td th:text="${pet.petName}">Lily</td>
-<td th:text="${pet.ownerLastName}">Theriault</td>
-<td th:text="${pet.petKind}">Cat</td>
-<td th:text="${pet.petGender}">Female</td>
-<td th:text="${pet.vaccinated}">Yes</td>
+<h1>Here are the Pets Details:</h1>
+<div th:object="${petForm}">
+    <p>Pet Name: <span th:text="*{petName}">Lily</span></p>
+    <p>Owners Last Name: <span th:text="*{ownerLastName}">Theriault</span></p>
+    <p>Pet Species: <span th:text="*{petKind}">Cat</span></p>
+    <p>Pet Gender: <span th:text="*{petGender}">Female</span></p>
+    <p>Vaccinated: <span th:text="*{vaccinated}? 'Yes' : 'No' ">Yes </span> </p>
+</div>
 </body>
 </html>

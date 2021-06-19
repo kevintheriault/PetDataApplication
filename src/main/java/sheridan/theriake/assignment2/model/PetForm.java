@@ -26,6 +26,6 @@ public class PetForm implements Serializable {
 
 //    NOTE: LOMBOK sometimes makes boolean getter/setters for boolean as 'get' not 'is'.
     private boolean vaccinated = false;
-    private int id =0;
+    private int id;
 
 }

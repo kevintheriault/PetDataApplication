@@ -92,18 +92,37 @@ public class PetDataController {
         return "redirect:ListPets";
     }
 
-    @GetMapping("/DetailPet")
-    public String detailPet(){
+    @GetMapping("/DetailPet/{id}")
+    public String detailPet(@PathVariable int id, Model model){
         log.trace("detailPet() called");
+        PetForm petForm = petDataService.getPetForm(id);
+        model.addAttribute(petForm);
         return "DetailPet";
     }
 
     @GetMapping("/EditPet")
-    public String editPet(){
+    public String editPet(@RequestParam int id, Model model){
         log.trace("editPet() called");
-
+        PetForm petForm = petDataService.getPetForm(id);
+        model.addAttribute("petForm", petForm);
         return "EditPet";
     }
 
-
+    @PostMapping("/UpdateData")
+    public String updateEntry(
+            @Validated @ModelAttribute("petForm") PetForm petForm,
+            BindingResult bindingResult,
+            Model model) {
+        log.trace("updateEntry() called");
+        if (bindingResult.hasErrors()) {
+            log.trace("Input errors");
+            model.addAttribute("petForm", petForm);
+            return "EditStudent";
+        } else {
+            log.trace("Input validated: no errors");
+            petDataService.updatePetForm(petForm);
+            log.debug("id = " + petForm.getId());
+            return "redirect:DetailPet/" + petForm.getId();
+        }
+    }
 }
