@@ -18,11 +18,11 @@ public class PetForm implements Serializable {
 
     @NotBlank
     @Pattern(regexp= "(Cat|Dog|Rabbit)?")
-    private String petKind ="";
+    private String petKind ="Dog";
 
     @NotBlank
     @Pattern(regexp= "(Male|Female)?")
-    private String petGender ="";
+    private String petGender ="Female";
 
 //    NOTE: LOMBOK sometimes makes boolean getter/setters for boolean as 'get' not 'is'.
     private boolean vaccinated = false;

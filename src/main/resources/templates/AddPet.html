@@ -5,6 +5,56 @@
     <title>Add a Pet -- Pet Data Application</title>
 </head>
 <body>
+<h1>Add a Pet to the Database</h1>
+<form method="post"
+      action="ConfirmNewPet.html" th:action="@{ConfirmNewPet}"
+      th:object="${petForm}">
 
+<!--    DISPLAY ERRORS HERE -->
+    <div th:if="${#fields.hasErrors('*')}">
+        <h3 class="error">Input Errors</h3>
+        <ul>
+            <li th:each="msg: ${#fields.errors('*')}" th:text="${msg}"
+                class="error">Input Error</li>
+        </ul>
+    </div>
+<!--    END OF ERROR DISPLAY -->
+    <h2>Pet Name:</h2>
+    <p>
+        <label for="pet_name" >First Name</label><br>
+        <input id="pet_name" type="text" th:field="*{petName}"/>
+        <span th:if="${#fields.hasErrors('petName')}"
+              class="error">&larr;&nbsp;<span th:errors="*{petName}">Pet Name Error</span></span>
+    </p>
+    <p>
+        <label for="owner" class="group_label">Owner's Last Name</label><br>
+        <input id="owner" type="text" th:field="*{ownerLastName}"/>
+        <span th:if="${#fields.hasErrors('ownerLastName')}"
+              class="error">&larr;&nbsp;<span th:errors="*{ownerLastName}">Last Name Error</span></span>
+    </p>
+
+    <h2>Required Pet Details</h2>
+    <p>
+        <label for="kind">Pet Species</label><br>
+        <select id="kind" th:field="*{petKind}">
+            <option th:value="Dog" selected="selected">Dog</option>
+            <option th:value="Cat" selected="selected">Cat</option>
+            <option th:value="Rabbit" selected="selected">Rabbit</option>
+        </select>
+        <span th:if="${#fields.hasErrors('petKind')}"
+              class="error">&larr;&nbsp;<span th:errors="*{petKind}">Species must be Rabbit, Cat or Dog</span></span>
+    </p>
+    <p>
+        <label>Pet Gender</label>
+        <input type="radio" name="gender" th:field="*{petGender}" th:value="Male">Male
+        <input type="radio" name="gender" th:field="*{petGender}" th:value="Female" checked="checked">Female
+    </p>
+    <p>
+        <label for="vaccinated">Is the Pet Vaccinated?</label>
+        <label><input type="checkbox" th:field="*{vaccinated}" th:value="true" id="vaccinated"/>Yes</label>
+    </p>
+    <input type="reset" value="Reset Form"/>
+    <input type="submit" value="Submit Data"/>
+</form>
 </body>
 </html>
