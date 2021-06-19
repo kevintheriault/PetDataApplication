@@ -5,6 +5,28 @@
     <title>List of Pets -- Pet Data Application</title>
 </head>
 <body>
+<h1>List of Pets in the Database</h1>
+<table th:unless="${#lists.isEmpty(pets)}">
+    <tr>
+        <th>Count</th>
+        <th>Pet Name</th>
+        <th>Last Name</th>
+        <th>Database Options</th>
+    </tr>
+    <tr th:each="pet, status: ${pets}">
+        <td th:text="${status.count}">1</td>
+        <td th:text="${pet.petName}">Lily</td>
+        <td th:text="${pet.ownerLastName}">Theriault</td>
+        <td>
+            <a href="DetailPet.html" th:href="@{DetailPet/{id}(id=${pet.id})}">Details</a>
+            &nbsp;|&nbsp;
+            <a href="EditPet.html" th:href="@{EditPet(id=${pet.id})}">Edit</a>
+            &nbsp;|&nbsp;
+            <a href="DeletePet.html" th:href="@{DeletePet(id=${pet.id})}">Delete</a>
+        </td>
+
+    </tr>
+</table>
 
 </body>
 </html>

@@ -19,6 +19,7 @@ public class PetDataServiceImpl implements PetDataService {
     }
 
     private static void copyFormToEntity(PetForm petForm, PetEntity pet) {
+        pet.setId(pet.getId());
         pet.setPetName(petForm.getPetName());
         pet.setOwnerLastName(petForm.getOwnerLastName());
         pet.setPetKind(petForm.getPetKind());
@@ -27,6 +28,7 @@ public class PetDataServiceImpl implements PetDataService {
     }
 
     private static void copyEntityToForm(PetForm petForm, PetEntity pet) {
+        petForm.setId(pet.getId());
         petForm.setPetName(pet.getPetName());
         petForm.setOwnerLastName(pet.getOwnerLastName());
         petForm.setPetKind(pet.getPetKind());
