@@ -117,7 +117,7 @@ public class PetDataController {
         if (bindingResult.hasErrors()) {
             log.trace("Input errors");
             model.addAttribute("petForm", petForm);
-            return "EditStudent";
+            return "EditPet";
         } else {
             log.trace("Input validated: no errors");
             petDataService.updatePetForm(petForm);

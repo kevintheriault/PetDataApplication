@@ -20,6 +20,7 @@
     </div>
     <!--    END OF ERROR DISPLAY -->
     <h2>Pet Name:</h2>
+    <input type="hidden" th:field="*{id}">
     <p>
         <label for="pet_name" >First Name</label><br>
         <input id="pet_name" type="text" th:field="*{petName}"/>
