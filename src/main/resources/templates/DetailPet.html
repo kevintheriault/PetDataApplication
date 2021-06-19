@@ -8,13 +8,21 @@
 </head>
 <body>
 <h1>Here are the Pets Details:</h1>
-<div th:object="${petForm}">
+<main>
+<div class="pet" th:object="${petForm}">
     <p> <span class="labels">Pet Name: </span><span th:text="*{petName}">Lily</span></p>
     <p> <span class="labels">Owners Last Name: </span><span th:text="*{ownerLastName}">Theriault</span></p>
     <p> <span class="labels">Pet Species:</span> <span th:text="*{petKind}">Cat</span></p>
     <p> <span class="labels">Pet Gender:</span><span th:text="*{petGender}">Female</span></p>
     <p> <span class="labels">Vaccinated: </span><span th:text="*{vaccinated}? 'Yes' : 'No' ">Yes </span></p>
 </div>
+<div class="image" th:switch="${petForm.petKind}">
+    <span th:case="'Dog'"><img th:src="@{/image/puppy.jpg}" /></span>
+    <span th:case="'Cat'"><img th:src="@{/image/kitten.png}" /></span>
+    <span th:case="'Rabbit'"><img th:src="@{/image/rabbit.jpg}" /></span>
+
+</div>
+</main>
 <div class="links">
     <p><a href="Index.html" th:href="@{/Index}">Index</a></p>
 

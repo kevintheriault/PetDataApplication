@@ -6,7 +6,17 @@ body{
     padding: 0;
 }
 
+main{
+    display: flex;
+    justify-content: space-between;
+}
+.image{
+    display: flex;
+}
 
+img{
+    max-width: 300px;
+}
 h1{
     text-align: center;
     color: #00203FFF;
