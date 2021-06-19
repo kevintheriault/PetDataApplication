@@ -25,10 +25,19 @@ h1{
 h2 {
     color: #00203FFF;
 }
+
 table, th, td{
     border-collapse: collapse;
     border: 1px solid #00203FFF;
 }
+
+table{
+    min-width: 500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 a{
     color: #0288D1;
     font-weight: bolder;
