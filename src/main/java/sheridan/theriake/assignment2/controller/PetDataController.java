@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.stylesheets.LinkStyle;
@@ -61,7 +62,7 @@ public class PetDataController {
             return "AddPet";
         } else {
             log.trace("Input validated: no errors");
-            log.trace("Adding new pet form data to database")
+            log.trace("Adding new pet form data to database");
             petDataService.insertPetForm(petForm);
 
             log.trace("Returning user to a new form ID for Post Redirect Get design prinicple");
@@ -69,7 +70,14 @@ public class PetDataController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/ConfirmNewPet/{id}")
+    public String confirmNewPet(@PathVariable(name="id") int id, Model model){
+        log.trace("get mapped confirmNewPet() called");
+        PetForm petForm = petDataService.getPetForm(id);
+        model.addAttribute("petForm", petForm);
+
+        return "ConfirmNewPet";
+    }
 
     @GetMapping("/DeletePet")
     public String deletePet(){

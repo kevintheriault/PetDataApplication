@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Confirmation of Data Entry -- Pet Data Application</title>
@@ -7,27 +7,12 @@
 <body>
 <h1>Here is the Pet Data you Inserted into the Database:</h1>
 <div th:object="${petForm}">
-    <p>
-    <p>
-        <label>First Name:</label>
-        <span th:text="*{}">Lily</span>
+<p th:text="*{petName}">Lily</p>
+    <p th:text="*{ownerLastName}">Theriault
     </p>
-    <p>
-        <label class="group_label">Last Name:</label>
-        <span class="output" th:text="*{lastName}">Simpson</span>
-    </p>
-    <p>
-        <label class="group_label">Program:</label>
-        <span class="output" th:text="*{programName}">Computer Programmer</span>
-    </p>
-    <p>
-        <label class="group_label">Year:</label>
-        <span class="output" th:text="*{programYear}">1</span>
-    </p>
-    <p>
-        <label class="group_label">Co-op:</label>
-        <span class="output" th:text="*{programCoop}">yes</span>
-    </p>
+    <p th:text="*{petKind}">Cat</p>
+    <p th:text="*{petGender}">Female</p>
+    <p th:text="*{vaccinated}">Yes</p>
 </div>
 </body>
 </html>
