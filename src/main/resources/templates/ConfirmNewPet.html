@@ -7,12 +7,11 @@
 <body>
 <h1>Here is the Pet Data you Inserted into the Database:</h1>
 <div th:object="${petForm}">
-<p th:text="*{petName}">Lily</p>
-    <p th:text="*{ownerLastName}">Theriault
-    </p>
-    <p th:text="*{petKind}">Cat</p>
-    <p th:text="*{petGender}">Female</p>
-    <p th:text="*{vaccinated}">Yes</p>
+    <p>Pet Name: <span th:text="*{petName}">Lily</span></p>
+    <p>Owners Last Name: <span th:text="*{ownerLastName}">Theriault</span></p>
+    <p>Pet Species: <span th:text="*{petKind}">Cat</span></p>
+    <p>Pet Gender: <span th:text="*{petGender}">Female</span></p>
+    <p>Vaccinated: <span th:text="*{vaccinated}? 'Yes' : 'No' ">Yes </span> </p>
 </div>
 </body>
 </html>
