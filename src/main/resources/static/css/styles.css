@@ -1,0 +1,39 @@
+body{
+    font-family: sans-serif;
+    background-color: #E69A8DFF;
+    width: 50%;
+    margin: auto;
+    padding: 0;
+}
+
+
+h1{
+    text-align: center;
+    color: #00203FFF;
+}
+
+h2 {
+    color: #00203FFF;
+}
+table, th, td{
+    border-collapse: collapse;
+    border: 1px solid #00203FFF;
+}
+a{
+    color: #0288D1;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.links{
+    display: flex;
+    justify-content: space-between;
+}
+
+.labels{
+    font-weight: bolder;
+}

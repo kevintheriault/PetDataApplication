@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit a Pet -- Pet Data Application</title>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}">
+
 </head>
 <body>
 <h1>You are EDITING A PETS INFORMATION:</h1>
@@ -57,7 +59,9 @@
     <input type="reset" value="Reset Form"/>
     <input type="submit" value="Submit Data"/>
 </form>
+<div class="links">
 <p><a href="Index.html" th:href="@{Index}">Index</a></p>
 <p><a href="ListPets.html" th:href="@{ListPets}">List of Pets</a></p>
+</div>
 </body>
 </html>

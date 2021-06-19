@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Detailed Pet Data -- Pet Data Application</title>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+
 </head>
 <body>
 <h1>Here are the Pets Details:</h1>
 <div th:object="${petForm}">
-    <p>Pet Name: <span th:text="*{petName}">Lily</span></p>
-    <p>Owners Last Name: <span th:text="*{ownerLastName}">Theriault</span></p>
-    <p>Pet Species: <span th:text="*{petKind}">Cat</span></p>
-    <p>Pet Gender: <span th:text="*{petGender}">Female</span></p>
-    <p>Vaccinated: <span th:text="*{vaccinated}? 'Yes' : 'No' ">Yes </span> </p>
+    <p> <span class="labels">Pet Name: </span><span th:text="*{petName}">Lily</span></p>
+    <p> <span class="labels">Owners Last Name: </span><span th:text="*{ownerLastName}">Theriault</span></p>
+    <p> <span class="labels">Pet Species:</span> <span th:text="*{petKind}">Cat</span></p>
+    <p> <span class="labels">Pet Gender:</span><span th:text="*{petGender}">Female</span></p>
+    <p> <span class="labels">Vaccinated: </span><span th:text="*{vaccinated}? 'Yes' : 'No' ">Yes </span></p>
 </div>
-<p><a href="EditPet.html" th:href="@{/EditPet(id=${petForm.id})}">Edit this entry</a></p>
-<p><a href="DeletePet.html" th:href="@{../DeletePet(id=${petForm.id})}">Delete this entry</a></p>
-<p><a href="Index.html" th:href="@{/Index}">Index</a></p>
-<p><a href="ListPets.html" th:href="@{/ListPets}">List of Pets</a></p>
+<div class="links">
+    <p><a href="Index.html" th:href="@{/Index}">Index</a></p>
+
+    <p><a href="EditPet.html" th:href="@{/EditPet(id=${petForm.id})}">Edit this entry</a></p>
+    <p><a href="DeletePet.html" th:href="@{../DeletePet(id=${petForm.id})}">Delete this entry</a></p>
+    <p><a href="ListPets.html" th:href="@{/ListPets}">List of Pets</a></p>
+</div>
 </body>
 </html>
